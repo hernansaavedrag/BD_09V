@@ -61,6 +61,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jmi_listar.setText("Listar");
+        jmi_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_listarActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmi_listar);
         jMenu1.add(jSeparator1);
 
@@ -101,6 +106,10 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarActionPerformed
        new Agregar().setVisible(true);
     }//GEN-LAST:event_jmi_agregarActionPerformed
+
+    private void jmi_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarActionPerformed
+       new Listar().setVisible(true);
+    }//GEN-LAST:event_jmi_listarActionPerformed
 
     /**
      * @param args the command line arguments
