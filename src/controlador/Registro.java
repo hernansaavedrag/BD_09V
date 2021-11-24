@@ -109,6 +109,7 @@ public class Registro {
             Connection cnx = con.obtenerConexion();
 
             String query = "SELECT idlibro,titulo,autor,publicacion,precio,disponible FROM libro WHERE idlibro = ?";
+            
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setInt(1, idLibro);
 

@@ -56,6 +56,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.add(jmi_actualizar);
 
         jmi_eliminar.setText("Eliminar");
+        jmi_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarActionPerformed(evt);
+            }
+        });
         jMenu3.add(jmi_eliminar);
 
         jMenu1.add(jMenu3);
@@ -110,6 +115,10 @@ public class Menu extends javax.swing.JFrame {
     private void jmi_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_listarActionPerformed
        new Listar().setVisible(true);
     }//GEN-LAST:event_jmi_listarActionPerformed
+
+    private void jmi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarActionPerformed
+       new Eliminar().setVisible(true);
+    }//GEN-LAST:event_jmi_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
