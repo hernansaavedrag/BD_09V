@@ -6,7 +6,10 @@
 package vista;
 
 import controlador.Registro;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import modelo.Libro;
 
 /**
@@ -141,6 +144,11 @@ public class Actualizar extends javax.swing.JFrame {
         });
 
         jbtn_actualizacion.setText("Actualización");
+        jbtn_actualizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_actualizacionActionPerformed(evt);
+            }
+        });
 
         jtxt_editar.setText("Editar");
         jtxt_editar.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +232,33 @@ public class Actualizar extends javax.swing.JFrame {
     private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
         dispose();
     }//GEN-LAST:event_jbtn_volverActionPerformed
+
+    private void jbtn_actualizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizacionActionPerformed
+       
+        
+        int precio,id;
+        String titulo,autor;
+        
+        id = Integer.parseInt(this.jtxt_idBuscar.getText());
+        titulo = this.jtxt_titulo.getText();
+        autor = this.jtxt_autor.getText();
+        precio = Integer.parseInt(this.jtxt_precio.getText());
+        
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha=null;
+        
+        try {
+            fecha = formato.parse(this.jtxt_publicacion.getText());
+        } catch (ParseException e) {
+            System.out.println("Error al actualizar fecha " + e.getMessage());
+        }
+        
+        Libro libro = new Libro(id, titulo, autor, fecha, precio, true);
+        
+        reg.actualizar(libro);
+        JOptionPane.showMessageDialog(null, "Datos Actualizados", "Aviso", 2);
+        
+    }//GEN-LAST:event_jbtn_actualizacionActionPerformed
 
     /**
      * @param args the command line arguments

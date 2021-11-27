@@ -209,6 +209,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizaci&#xf3;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn_actualizacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jtxt_editar">
           <Properties>
