@@ -5,17 +5,27 @@
  */
 package vista;
 
+import controlador.Registro;
+import java.util.Date;
+import modelo.Libro;
+
 /**
  *
  * @author Sebastian
  */
 public class Actualizar extends javax.swing.JFrame {
 
+    Registro reg = new Registro();
+    
     /**
      * Creates new form Actualizar
      */
     public Actualizar() {
         initComponents();
+        this.jtxt_titulo.setEditable(false);
+        this.jtxt_autor.setEditable(false);
+        this.jtxt_precio.setEditable(false);
+        this.jtxt_publicacion.setEditable(false);
     }
 
     /**
@@ -52,6 +62,11 @@ public class Actualizar extends javax.swing.JFrame {
         jLabel1.setText("ID:");
 
         jbtn_buscar.setText("Buscar");
+        jbtn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Título:");
 
@@ -119,10 +134,20 @@ public class Actualizar extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
 
         jbtn_volver.setText("Volver");
+        jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volverActionPerformed(evt);
+            }
+        });
 
         jbtn_actualizacion.setText("Actualización");
 
         jtxt_editar.setText("Editar");
+        jtxt_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_editarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -167,40 +192,73 @@ public class Actualizar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtxt_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_editarActionPerformed
+        
+        this.jtxt_titulo.setEditable(true);
+        this.jtxt_autor.setEditable(true);
+        this.jtxt_precio.setEditable(true);
+        this.jtxt_publicacion.setEditable(true);
+        this.jtxt_titulo.requestFocus();
+    }//GEN-LAST:event_jtxt_editarActionPerformed
+
+    private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
+        
+        int id = Integer.parseInt(this.jtxt_idBuscar.getText());
+        
+        Libro libro = reg.buscarPorId(id);
+        
+        String titulo = libro.getTitulo();
+        String autor = libro.getAutor();
+        int precio = libro.getPrecio();
+        Date fecha = libro.getPublicacion();
+        
+        this.jtxt_titulo.setText(titulo);
+        this.jtxt_autor.setText(autor);
+        this.jtxt_precio.setText(String.valueOf(precio));
+        this.jtxt_publicacion.setText(""+fecha);
+        
+        
+        
+    }//GEN-LAST:event_jbtn_buscarActionPerformed
+
+    private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbtn_volverActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Actualizar().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Actualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Actualizar().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
